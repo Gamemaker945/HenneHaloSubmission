@@ -1,0 +1,6 @@
+framework module Pods_MarsView {
+  umbrella header "Pods-MarsView-umbrella.h"
+
+  export *
+  module * { export * }
+}

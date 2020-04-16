@@ -1,0 +1,17 @@
+# Uncomment the next line to define a global platform for your project10
+platform :ios, '10.0'
+
+use_frameworks!
+
+source 'https://github.com/CocoaPods/Specs.git'
+
+workspace 'MarsView'
+
+def myPods
+pod 'SDWebImage', '~> 5.0.6'
+pod 'Alamofire'
+end
+
+target 'MarsView' do
+myPods
+end
