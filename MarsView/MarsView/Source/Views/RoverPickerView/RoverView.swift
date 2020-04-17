@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import UIKit
 
 enum RoverState {
     case selected
@@ -122,14 +123,14 @@ private extension RoverView {
     }
     
     private func setConstraints() {
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: self.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            
-            roverImage.heightAnchor.constraint(equalTo: roverImage.widthAnchor),
-        ])
+        
+        stackView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        roverImage.snp.makeConstraints {
+            $0.height.equalTo(roverImage.snp.width)
+        }
     }
     
 }

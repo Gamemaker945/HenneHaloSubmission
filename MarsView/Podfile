@@ -11,6 +11,7 @@ def myPods
 pod 'SDWebImage', '~> 5.0.6'
 pod 'Alamofire'
 pod "PromiseKit", "~> 6.8"
+pod 'SnapKit', '~> 5.0.0'
 end
 
 target 'MarsView' do

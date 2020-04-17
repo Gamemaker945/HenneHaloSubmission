@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
 class RoverManifestView: UIView {
     
@@ -124,11 +125,8 @@ private extension RoverManifestView {
     }
 
     private func setConstraints() {
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: self.topAnchor),
-            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-        ])
+        stackView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
     }
 }

@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
 class TitleValueLabel: UIView {
 
@@ -73,18 +74,17 @@ private extension TitleValueLabel {
     }
     
     private func setConstraints() {
-        NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: self.topAnchor),
-            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            titleLabel.widthAnchor.constraint(equalToConstant: 150),
-            titleLabel.heightAnchor.constraint(equalToConstant: 20),
-            titleLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            
-            valueLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor),
-            valueLabel.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
-            valueLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            valueLabel.heightAnchor.constraint(equalTo: titleLabel.heightAnchor)
-        ])
+        
+        titleLabel.snp.makeConstraints {
+            $0.top.leading.bottom.equalToSuperview()
+            $0.width.equalTo(150)
+            $0.height.equalTo(20)
+        }
+        
+        valueLabel.snp.makeConstraints {
+            $0.top.height.equalTo(titleLabel)
+            $0.leading.equalTo(titleLabel.snp.trailing)
+            $0.trailing.equalToSuperview()
+        }
     }
-    
 }

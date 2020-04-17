@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
 class PhotoViewTableHeaderView: UIView {
     
@@ -114,11 +115,10 @@ private extension PhotoViewTableHeaderView {
 
     private func setConstraints() {
         
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: self.topAnchor, constant: Constants.Margins.sides),
-            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            stackView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -Constants.Margins.sides),
-        ])
+        stackView.snp.makeConstraints {
+            $0.leading.trailing.equalToSuperview()
+            $0.top.equalToSuperview().offset(Constants.Margins.sides)
+            $0.bottom.equalToSuperview().offset(-Constants.Margins.sides)
+        }
     }
 }

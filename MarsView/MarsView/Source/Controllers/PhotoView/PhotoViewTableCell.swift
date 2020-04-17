@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import SDWebImage
+import SnapKit
 
 class PhotoViewTableCell: UITableViewCell {
     
@@ -102,26 +103,24 @@ private extension PhotoViewTableCell {
     }
     
     private func setupConstraints() {
-        NSLayoutConstraint.activate([
-            photoView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            photoView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-            photoView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.65),
-            
-            photoView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            
-            dateLabel.bottomAnchor.constraint(equalTo: photoView.bottomAnchor),
-            dateLabel.leadingAnchor.constraint(equalTo: photoView.trailingAnchor, constant: 10),
-            dateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            dateLabel.heightAnchor.constraint(equalToConstant: 20),
-            
-            cameraNameLabel.bottomAnchor.constraint(equalTo: dateLabel.topAnchor, constant: -10),
-            cameraNameLabel.leadingAnchor.constraint(equalTo: dateLabel.leadingAnchor),
-            cameraNameLabel.trailingAnchor.constraint(equalTo: dateLabel.trailingAnchor),
-            cameraNameLabel.heightAnchor.constraint(equalToConstant: 20)
-        ])
         
-        let constraint = photoView.heightAnchor.constraint(equalTo: photoView.widthAnchor)
-        constraint.priority = .defaultHigh
-        constraint.isActive = true
+        photoView.snp.makeConstraints{
+            $0.top.leading.equalToSuperview().offset(10)
+            $0.width.equalToSuperview().multipliedBy(0.65)
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(photoView.snp.width).priority(.high)
+        }
+        
+        dateLabel.snp.makeConstraints{
+            $0.leading.equalTo(photoView.snp.trailing).offset(10)
+            $0.trailing.equalToSuperview().offset(-10)
+            $0.bottom.equalToSuperview()
+            $0.height.equalTo(20)
+        }
+        
+        cameraNameLabel.snp.makeConstraints{
+            $0.leading.trailing.height.equalTo(dateLabel)
+            $0.bottom.equalTo(dateLabel.snp.top).offset(-10)
+        }
     }
 }

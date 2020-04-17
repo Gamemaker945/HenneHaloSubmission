@@ -163,17 +163,16 @@ private extension PhotoViewController {
     }
     
     func layoutUIElements() {
-        NSLayoutConstraint.activate([
-            table.topAnchor.constraint(equalTo: view.topAnchor),
-            table.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            table.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            table.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            
-            noImagesLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            noImagesLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            noImagesLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: Constants.Margins.noImagesSide),
-            noImagesLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -Constants.Margins.noImagesSide)
-        ])
+        
+        table.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        noImagesLabel.snp.makeConstraints {
+            $0.centerX.centerY.equalToSuperview()
+            $0.leading.equalToSuperview().offset(Constants.Margins.noImagesSide)
+            $0.trailing.equalToSuperview().offset(-Constants.Margins.noImagesSide)
+        }
     }
     
     private func updateUI(forViewModel viewModel: PhotoViewModel?) {

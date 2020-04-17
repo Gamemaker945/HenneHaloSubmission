@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
 protocol MainViewType: class {
     var viewModel: MainViewModel? { get set }
@@ -312,62 +313,63 @@ private extension MainViewController {
     }
     
     private func layoutUIElements() {
-        NSLayoutConstraint.activate([
-            backgroundImage.topAnchor.constraint(equalTo: view.topAnchor),
-            backgroundImage.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            backgroundImage.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            backgroundImage.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            
-            scrollView.topAnchor.constraint(equalTo: view.topAnchor),
-            scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            
-            stackView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: Constants.Margins.top),
-            stackView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: Constants.Margins.side),
-            stackView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: -Constants.Margins.side),
-            stackView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, constant: -Constants.Margins.side * CGFloat(2)),
-            
-            sectionOneBackground.topAnchor.constraint(equalTo: stackView.topAnchor, constant: -Constants.Margins.backgroundEdge),
-            sectionOneBackground.bottomAnchor.constraint(equalTo: stackView.bottomAnchor, constant: Constants.Margins.backgroundEdge),
-            sectionOneBackground.leadingAnchor.constraint(equalTo: stackView.leadingAnchor, constant: -Constants.Margins.backgroundEdge),
-            sectionOneBackground.trailingAnchor.constraint(equalTo: stackView.trailingAnchor, constant: Constants.Margins.backgroundEdge),
-            
-            stackViewSectionTwo.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: Constants.Margins.sectionSeparation),
-            stackViewSectionTwo.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor),
-            stackViewSectionTwo.leadingAnchor.constraint(equalTo: stackView.leadingAnchor),
-            stackViewSectionTwo.trailingAnchor.constraint(equalTo: stackView.trailingAnchor),
-            stackViewSectionTwo.widthAnchor.constraint(equalTo: stackView.widthAnchor),
-            
-            sectionTwoBackground.topAnchor.constraint(equalTo: stackViewSectionTwo.topAnchor, constant: -Constants.Margins.backgroundEdge),
-            sectionTwoBackground.bottomAnchor.constraint(equalTo: stackViewSectionTwo.bottomAnchor, constant: Constants.Margins.backgroundEdge),
-            sectionTwoBackground.leadingAnchor.constraint(equalTo: stackViewSectionTwo.leadingAnchor, constant: -Constants.Margins.backgroundEdge),
-            sectionTwoBackground.trailingAnchor.constraint(equalTo: stackViewSectionTwo.trailingAnchor, constant: Constants.Margins.backgroundEdge),
-            
-            photoButton.heightAnchor.constraint(equalToConstant: Constants.Margins.sectionSeparation)
-        ])
         
-        NSLayoutConstraint.activate([
-            solLabel.topAnchor.constraint(equalTo: pickerContainer.topAnchor),
-            solLabel.heightAnchor.constraint(equalToConstant: Constants.Sizes.pickerLabelHeight),
-            solLabel.leadingAnchor.constraint(equalTo: pickerContainer.leadingAnchor),
-            solLabel.widthAnchor.constraint(equalTo: pickerContainer.widthAnchor, multiplier: 0.5),
-            
-            solPicker.topAnchor.constraint(equalTo: solLabel.bottomAnchor),
-            solPicker.bottomAnchor.constraint(equalTo: pickerContainer.bottomAnchor),
-            solPicker.leadingAnchor.constraint(equalTo: solLabel.leadingAnchor),
-            solPicker.widthAnchor.constraint(equalTo: solLabel.widthAnchor),
-            
-            cameraLabel.topAnchor.constraint(equalTo: pickerContainer.topAnchor),
-            cameraLabel.heightAnchor.constraint(equalToConstant: Constants.Sizes.pickerLabelHeight),
-            cameraLabel.trailingAnchor.constraint(equalTo: pickerContainer.trailingAnchor),
-            cameraLabel.widthAnchor.constraint(equalTo: pickerContainer.widthAnchor, multiplier: 0.5),
-            
-            cameraPicker.topAnchor.constraint(equalTo: cameraLabel.bottomAnchor),
-            cameraPicker.bottomAnchor.constraint(equalTo: pickerContainer.bottomAnchor),
-            cameraPicker.trailingAnchor.constraint(equalTo: cameraLabel.trailingAnchor),
-            cameraPicker.widthAnchor.constraint(equalTo: cameraLabel.widthAnchor),
-        ])
+        backgroundImage.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        scrollView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        stackView.snp.makeConstraints {
+            $0.top.equalTo(scrollView).offset(Constants.Margins.top)
+            $0.leading.equalTo(scrollView).offset(Constants.Margins.side)
+            $0.trailing.equalTo(scrollView).offset(-Constants.Margins.side)
+            $0.width.equalTo(scrollView).offset(-Constants.Margins.side * CGFloat(2))
+        }
+        
+        sectionOneBackground.snp.makeConstraints {
+            $0.top.leading.equalTo(stackView).offset(-Constants.Margins.backgroundEdge)
+            $0.bottom.trailing.equalTo(stackView).offset(Constants.Margins.backgroundEdge)
+        }
+        
+        stackViewSectionTwo.snp.makeConstraints {
+            $0.top.equalTo(stackView.snp.bottom).offset(Constants.Margins.sectionSeparation)
+            $0.leading.trailing.width.equalTo(stackView)
+            $0.bottom.equalTo(scrollView)
+        }
+        
+        sectionTwoBackground.snp.makeConstraints {
+            $0.top.leading.equalTo(stackViewSectionTwo).offset(-Constants.Margins.backgroundEdge)
+            $0.bottom.trailing.equalTo(stackViewSectionTwo).offset(Constants.Margins.backgroundEdge)
+        }
+        
+        photoButton.snp.makeConstraints {
+            $0.height.equalTo(Constants.Margins.sectionSeparation)
+        }
+
+        solLabel.snp.makeConstraints {
+            $0.top.leading.equalTo(pickerContainer)
+            $0.height.equalTo(Constants.Sizes.pickerLabelHeight)
+            $0.width.equalTo(pickerContainer).multipliedBy(0.5)
+        }
+        
+        solPicker.snp.makeConstraints {
+            $0.top.leading.width.equalTo(solLabel)
+            $0.bottom.equalTo(pickerContainer)
+        }
+        
+        cameraLabel.snp.makeConstraints {
+            $0.top.trailing.equalTo(pickerContainer)
+            $0.height.equalTo(Constants.Sizes.pickerLabelHeight)
+            $0.width.equalTo(pickerContainer).multipliedBy(0.5)
+        }
+        
+        cameraPicker.snp.makeConstraints {
+            $0.top.trailing.width.equalTo(cameraLabel)
+            $0.bottom.equalTo(pickerContainer)
+        }
     }
     
     private func updateUI(forViewModel viewModel: MainViewModel?) {

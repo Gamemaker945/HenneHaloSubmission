@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
 class LoadingView: UIView {
     
@@ -80,24 +81,23 @@ private extension LoadingView {
     }
 
     private func setConstraints() {
-        NSLayoutConstraint.activate([
-            backgroundView.topAnchor.constraint(equalTo: self.topAnchor),
-            backgroundView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-            backgroundView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            backgroundView.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            
-            centerView.centerXAnchor.constraint(equalTo: backgroundView.centerXAnchor),
-            centerView.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor),
-            centerView.widthAnchor.constraint(equalToConstant: 100),
-            centerView.heightAnchor.constraint(equalToConstant: 100),
-            
-            indicator.centerXAnchor.constraint(equalTo: centerView.centerXAnchor),
-            indicator.centerYAnchor.constraint(equalTo: centerView.centerYAnchor),
-            
-            loadingLabel.leadingAnchor.constraint(equalTo: centerView.leadingAnchor),
-            loadingLabel.trailingAnchor.constraint(equalTo: centerView.trailingAnchor),
-            loadingLabel.topAnchor.constraint(equalTo: indicator.bottomAnchor, constant: 5),
-            loadingLabel.heightAnchor.constraint(equalToConstant: 20),
-        ])
+        backgroundView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        centerView.snp.makeConstraints {
+            $0.centerX.centerY.equalTo(backgroundView)
+            $0.width.height.equalTo(100)
+        }
+        
+        indicator.snp.makeConstraints {
+            $0.centerX.centerY.equalTo(centerView)
+        }
+        
+        loadingLabel.snp.makeConstraints {
+            $0.leading.trailing.equalTo(centerView)
+            $0.top.equalTo(indicator.snp.bottom).offset(5)
+            $0.height.equalTo(20)
+        }
     }
 }
