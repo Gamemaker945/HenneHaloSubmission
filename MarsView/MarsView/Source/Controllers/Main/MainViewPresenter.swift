@@ -10,7 +10,7 @@ import Foundation
 import PromiseKit
 
 protocol MainViewPresenterType {
-    func viewDidLoad()
+    func viewDidLoad(rover: RoverModel?)
     func roverSelected(_ rover: RoverModel)
 }
 
@@ -34,9 +34,8 @@ final class MainViewPresenter: MainViewPresenterType {
     
     // MARK: - MainViewPresenterType Functions
     
-    func viewDidLoad() {
-        let roverManager = RoverManager()
-        if let rover = roverManager.rovers.first {
+    func viewDidLoad(rover: RoverModel?) {
+        if let rover = rover {
             if rover.manifest != nil {
                 updateViewForRover(rover)
             } else {

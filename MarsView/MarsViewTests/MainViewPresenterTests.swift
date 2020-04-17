@@ -26,8 +26,9 @@ class MainViewPresenterTests: XCTestCase {
         subject = MainViewPresenter(view: view, marsRoverDataService: roverDataService)
     }
 
-    func test_ViewDidLoad() {
-        subject.viewDidLoad()
+    func test_ViewDidLoad_NoRoverManifest() {
+        let rover = RoverModel(name: "Test")
+        subject.viewDidLoad(rover: rover)
         wait(for: 1)
         
         XCTAssertNotNil(view.viewModel)
@@ -36,9 +37,22 @@ class MainViewPresenterTests: XCTestCase {
         XCTAssertFalse(view.errorShown)
     }
     
+    func test_ViewDidLoad_CachedRoverManifest() {
+        let rover = RoverModel(name: "Test")
+        rover.manifest = RoverManifest(name: "Test Rover", landingDate: "02-02-2020", launchDate: "01-02-2020", status: "Completed", maxSol: 100, maxDate: "03-02-2020", totalPhotos: 100, sols: [])
+        subject.viewDidLoad(rover: rover)
+        wait(for: 1)
+        
+        XCTAssertNotNil(view.viewModel)
+        XCTAssertFalse(view.loadingShown)
+        XCTAssertFalse(view.loadingHidden)
+        XCTAssertFalse(view.errorShown)
+    }
+    
     func test_ViewDidLoad_WithError() {
         manifestClient.hasError = true
-        subject.viewDidLoad()
+        let rover = RoverModel(name: "Test")
+        subject.viewDidLoad(rover: rover)
         wait(for: 1)
         
         XCTAssertNil(view.viewModel)

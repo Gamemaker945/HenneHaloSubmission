@@ -185,7 +185,8 @@ class MainViewController: UIViewController, MainViewType {
         addUIElements()
         layoutUIElements()
         
-        presenter?.viewDidLoad()
+        let roverManager = RoverManager()
+        presenter?.viewDidLoad(rover: roverManager.rovers.first)
     }
     
     override func viewDidLayoutSubviews() {
