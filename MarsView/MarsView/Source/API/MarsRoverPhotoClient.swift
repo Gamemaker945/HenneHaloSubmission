@@ -1,17 +1,8 @@
 //
-//  MarsRoverClient.swift
+//  MarsRoverPhotoClient.swift
 //  MarsView
 //
-//  Created by Christian Henne on 4/15/20.
-//  Copyright © 2020 Self. All rights reserved.
-//
-
-import Foundation
-//
-//  MarsRoverManifestClient.swift
-//  MarsView
-//
-//  Created by Christian Henne on 4/15/20.
+//  Created by Christian Henne on 4/17/20.
 //  Copyright © 2020 Self. All rights reserved.
 //
 
@@ -22,11 +13,11 @@ import PromiseKit
 // MARK: - Client Prototype
 // Uses prototype to make for easier unit testing via injection
 
-protocol MarsRoverManifestClientType: MarsRoverBaseDataClient {
-    func getRoverManifest(using rover: RoverModel) -> Promise<RoverPhotoManifest>
+protocol MarsRoverPhotoClientType: MarsRoverBaseDataClient {
+    func getRoverPhotos(using roverName: String, sol: Int, camera: String) -> Promise<RoverPhotos>
 }
 
-class MarsRoverManifestClient: MarsRoverManifestClientType {
+class MarsRoverPhotoClient: MarsRoverPhotoClientType {
     
     // MARK: - Constants
     
@@ -38,23 +29,19 @@ class MarsRoverManifestClient: MarsRoverManifestClientType {
         }
         
         struct URLs {
-            static let ManifestBaseURL = "manifests/"
             static let PhotosBaseURL = "rovers/"
         }
     }
     
     // MARK: - MarsRoverDataClientType Functions
     
-    func getRoverManifest(using rover: RoverModel) -> Promise<RoverPhotoManifest> {
+    func getRoverPhotos(using roverName: String, sol: Int, camera: String) -> Promise<RoverPhotos> {
         
+        let urlString = buildPhotoURL(using: roverName, sol: sol, camera: camera)
+        guard let url = URL(string: urlString) else { return Promise<RoverPhotos>.init(error: MarsRoverClientError.unknownError) }
         
-        let urlString = baseApiURL + Constants.URLs.ManifestBaseURL + rover.name.lowercased() + "?" + apiKey
-        guard let url = URL(string: urlString) else {
-            return Promise<RoverPhotoManifest>.init(error: MarsRoverClientError.unknownError)
-        }
+        let (promise, seal) = Promise<RoverPhotos>.pending()
         
-        let (promise, seal) = Promise<RoverPhotoManifest>.pending()
-
         Alamofire.request(url).responseData { response in
             guard response.result.isSuccess else {
                 seal.reject(MarsRoverClientError.serverError)
@@ -68,8 +55,8 @@ class MarsRoverManifestClient: MarsRoverManifestClientType {
             
             do {
                 let jsonDecoder = JSONDecoder()
-                let manifest = try jsonDecoder.decode(RoverPhotoManifest.self, from: value)
-                seal.fulfill(manifest)
+                let photos = try jsonDecoder.decode(RoverPhotos.self, from: value)
+                seal.fulfill(photos)
             } catch {
                 print("JSON error: \(error.localizedDescription)")
                 seal.reject(MarsRoverClientError.decodingError)
@@ -77,5 +64,9 @@ class MarsRoverManifestClient: MarsRoverManifestClientType {
         }
         
         return promise
+    }
+    
+    private func buildPhotoURL(using roverName: String, sol: Int, camera: String) -> String {
+        return baseApiURL + Constants.URLs.PhotosBaseURL + roverName.lowercased() + "/" + Constants.Keys.photosKey + "?" + Constants.Keys.solKey + "=\(sol)&" + Constants.Keys.cameraKey + "=\(camera.lowercased())&" + apiKey
     }
 }

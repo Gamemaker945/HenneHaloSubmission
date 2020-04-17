@@ -7,31 +7,34 @@
 //
 
 import Foundation
+import PromiseKit
 
 // MARK: - Service Prototype
 // Uses prototype to make for easier unit testing via injection
 
 protocol MarsRoverDataServiceType {
-    func getRoverManifest(using rover: RoverModel, onComplete: @escaping ((_ roverManifest: RoverPhotoManifest?, _ error: Error?) -> Void))
-    func getRoverPhotos(using roverName: String, sol: Int, camera: String, onComplete: @escaping ((_ roverPhotos: RoverPhotos?, _ error: Error?) -> Void))
+    func getRoverManifest(using rover: RoverModel) -> Promise<RoverPhotoManifest>
+    func getRoverPhotos(using roverName: String, sol: Int, camera: String)  -> Promise<RoverPhotos>
 }
 
 
 class MarsRoverDataService: MarsRoverDataServiceType {
     
-    let dataClient: MarsRoverDataClientType
+    let manifestClient: MarsRoverManifestClientType
+    let photoClient: MarsRoverPhotoClientType
     
     // Inject client into service for easy unit testing
-    init(roverDataClient: MarsRoverDataClientType) {
-        self.dataClient = roverDataClient
+    init(manifestClient: MarsRoverManifestClientType, photoClient: MarsRoverPhotoClientType) {
+        self.manifestClient = manifestClient
+        self.photoClient = photoClient
     }
     
-    func getRoverManifest(using rover: RoverModel, onComplete: @escaping ((_ roverManifest: RoverPhotoManifest?, _ error: Error?) -> Void)) {
-        dataClient.getRoverManifest(using: rover, onComplete: onComplete)
+    func getRoverManifest(using rover: RoverModel) -> Promise<RoverPhotoManifest> {
+        return manifestClient.getRoverManifest(using: rover)
     }
     
-    func getRoverPhotos(using roverName: String, sol: Int, camera: String, onComplete: @escaping ((_ roverPhotos: RoverPhotos?, _ error: Error?) -> Void)) {
-        dataClient.getRoverPhotos(using: roverName, sol: sol, camera: camera, onComplete: onComplete)
+    func getRoverPhotos(using roverName: String, sol: Int, camera: String)  -> Promise<RoverPhotos> {
+        return photoClient.getRoverPhotos(using: roverName, sol: sol, camera: camera)
     }
     
 }

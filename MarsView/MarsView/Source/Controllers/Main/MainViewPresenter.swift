@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import PromiseKit
 
 protocol MainViewPresenterType {
     
@@ -60,20 +61,30 @@ private extension MainViewPresenter {
         guard let rover = rover else { return }
         
         view?.showLoading()
-        dataService.getRoverManifest(using: rover) { [weak self] (manifest, error) in
-            
-            DispatchQueue.main.async { [weak self] in
-                self?.view?.hideLoading()
-                if error != nil {
-                    self?.view?.showError(error!)
-                    return
-                }
-                
-                guard let self = self else { return }
-                rover.manifest = manifest?.photo_manifest
-                self.updateViewForRover(rover)
-            }
+        dataService.getRoverManifest(using: rover).done { [weak self] manifest in
+            rover.manifest = manifest.photo_manifest
+            self?.updateViewForRover(rover)
+        }.ensure { [weak self] in
+            self?.view?.hideLoading()
+        }.catch { [weak self] error in
+            self?.view?.showError(error)
+            return
         }
+        
+//        dataService.getRoverManifest(using: rover) { [weak self] (manifest, error) in
+//            
+//            DispatchQueue.main.async { [weak self] in
+//                
+//                if error != nil {
+//                    self?.view?.showError(error!)
+//                    return
+//                }
+//                
+//                guard let self = self else { return }
+//                rover.manifest = manifest?.photo_manifest
+//                self.updateViewForRover(rover)
+//            }
+//        }
     }
     
     private func updateViewForRover(_ rover: RoverModel?) {

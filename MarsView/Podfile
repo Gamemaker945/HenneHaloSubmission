@@ -10,6 +10,7 @@ workspace 'MarsView'
 def myPods
 pod 'SDWebImage', '~> 5.0.6'
 pod 'Alamofire'
+pod "PromiseKit", "~> 6.8"
 end
 
 target 'MarsView' do

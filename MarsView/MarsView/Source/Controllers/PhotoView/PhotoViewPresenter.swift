@@ -50,19 +50,28 @@ private extension PhotoViewPresenter {
     private func fetchRoverPhotos() {
         
         view?.showLoading()
-        dataService.getRoverPhotos(using: roverName, sol: solIndex, camera: camera) { [weak self] (photos, error) in
-            
-            DispatchQueue.main.async { [weak self] in
-                self?.view?.hideLoading()
-                if error != nil {
-                    self?.view?.showError(error!)
-                    return
-                }
-                
-                guard let self = self else { return }
-                self.updateViewForPhotos(photos)
-            }
+        
+        dataService.getRoverPhotos(using: roverName, sol: solIndex, camera: camera).done { [weak self] photos in
+            self?.updateViewForPhotos(photos)
+        }.ensure { [weak self] in
+            self?.view?.hideLoading()
+        }.catch { [weak self] error in
+            self?.view?.showError(error)
         }
+        
+//        dataService.getRoverPhotos(using: roverName, sol: solIndex, camera: camera) { [weak self] (photos, error) in
+//            
+//            DispatchQueue.main.async { [weak self] in
+//                
+//                if error != nil {
+//                    self?.view?.showError(error!)
+//                    return
+//                }
+//                
+//                guard let self = self else { return }
+//                
+//            }
+//        }
     }
     
     private func updateViewForPhotos(_ photos: RoverPhotos?) {

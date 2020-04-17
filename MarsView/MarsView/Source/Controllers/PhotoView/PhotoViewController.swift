@@ -78,7 +78,7 @@ class PhotoViewController: UIViewController, PhotoViewType {
     
     static func make(roverName: String, solIndex: Int, camera: String) -> PhotoViewController {
         let viewController = PhotoViewController()
-        let presenter = PhotoViewPresenter(view: viewController, roverName: roverName, solIndex: solIndex, camera: camera, marsRoverDataService: MarsRoverDataService(roverDataClient: MarsRoverDataClient()))
+        let presenter = PhotoViewPresenter(view: viewController, roverName: roverName, solIndex: solIndex, camera: camera, marsRoverDataService: MarsRoverDataService(manifestClient: MarsRoverManifestClient(), photoClient: MarsRoverPhotoClient()))
         viewController.presenter = presenter
         return viewController
     }

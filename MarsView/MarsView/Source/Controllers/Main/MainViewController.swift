@@ -194,7 +194,8 @@ class MainViewController: UIViewController, MainViewType {
         super.viewDidLoad()
         
         title = "MARS VIEW"
-        presenter = MainViewPresenter(view: self, marsRoverDataService: MarsRoverDataService(roverDataClient: MarsRoverDataClient()))
+        
+        presenter = MainViewPresenter(view: self, marsRoverDataService: MarsRoverDataService(manifestClient: MarsRoverManifestClient(), photoClient: MarsRoverPhotoClient()))
         
         addUIElements()
         layoutUIElements()
