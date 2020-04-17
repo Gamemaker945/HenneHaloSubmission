@@ -30,6 +30,8 @@
 		042AEDDF2448061000DA7177 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AEDDE2448061000DA7177 /* PhotoViewController.swift */; };
 		04ADC358244A2C87008644CA /* MarsRoverBaseDataClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADC357244A2C87008644CA /* MarsRoverBaseDataClient.swift */; };
 		04ADC35A244A2C92008644CA /* MarsRoverPhotoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADC359244A2C92008644CA /* MarsRoverPhotoClient.swift */; };
+		04AF7E38244A3C72002E3842 /* DropDownPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF7E37244A3C72002E3842 /* DropDownPicker.swift */; };
+		04AF7E3A244A492E002E3842 /* DropDownPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF7E39244A492E002E3842 /* DropDownPickerCell.swift */; };
 		04CDC7E224481255009614D5 /* RoverPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDC7E124481255009614D5 /* RoverPhotos.swift */; };
 		04CDC7E424489E5F009614D5 /* PhotoViewTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDC7E324489E5F009614D5 /* PhotoViewTableHeaderView.swift */; };
 		04CDC7E62448A0D0009614D5 /* PhotoViewTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDC7E52448A0D0009614D5 /* PhotoViewTableCell.swift */; };
@@ -74,6 +76,8 @@
 		042AEDDE2448061000DA7177 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		04ADC357244A2C87008644CA /* MarsRoverBaseDataClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarsRoverBaseDataClient.swift; sourceTree = "<group>"; };
 		04ADC359244A2C92008644CA /* MarsRoverPhotoClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarsRoverPhotoClient.swift; sourceTree = "<group>"; };
+		04AF7E37244A3C72002E3842 /* DropDownPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownPicker.swift; sourceTree = "<group>"; };
+		04AF7E39244A492E002E3842 /* DropDownPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownPickerCell.swift; sourceTree = "<group>"; };
 		04CDC7E124481255009614D5 /* RoverPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverPhotos.swift; sourceTree = "<group>"; };
 		04CDC7E324489E5F009614D5 /* PhotoViewTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewTableHeaderView.swift; sourceTree = "<group>"; };
 		04CDC7E52448A0D0009614D5 /* PhotoViewTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewTableCell.swift; sourceTree = "<group>"; };
@@ -197,9 +201,9 @@
 		042AEDC62447AB6300DA7177 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				04AF7E35244A3C17002E3842 /* Pickers */,
 				042AEDD52447DD6100DA7177 /* Loading */,
 				042AEDCC2447C81200DA7177 /* ManifestView */,
-				042AEDC72447AB7300DA7177 /* RoverPickerView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -249,6 +253,24 @@
 				04CDC7E52448A0D0009614D5 /* PhotoViewTableCell.swift */,
 			);
 			path = PhotoView;
+			sourceTree = "<group>";
+		};
+		04AF7E35244A3C17002E3842 /* Pickers */ = {
+			isa = PBXGroup;
+			children = (
+				04AF7E36244A3C29002E3842 /* DropDownPicker */,
+				042AEDC72447AB7300DA7177 /* RoverPickerView */,
+			);
+			path = Pickers;
+			sourceTree = "<group>";
+		};
+		04AF7E36244A3C29002E3842 /* DropDownPicker */ = {
+			isa = PBXGroup;
+			children = (
+				04AF7E37244A3C72002E3842 /* DropDownPicker.swift */,
+				04AF7E39244A492E002E3842 /* DropDownPickerCell.swift */,
+			);
+			path = DropDownPicker;
 			sourceTree = "<group>";
 		};
 		04CDC7E02448123A009614D5 /* Managers */ = {
@@ -435,9 +457,11 @@
 				042AEDCB2447B02A00DA7177 /* RoverPickerView.swift in Sources */,
 				042AEDDF2448061000DA7177 /* PhotoViewController.swift in Sources */,
 				042AEDC12447A3A600DA7177 /* RoverPhotoManifest.swift in Sources */,
+				04AF7E3A244A492E002E3842 /* DropDownPickerCell.swift in Sources */,
 				042AED9024479D1C00DA7177 /* AppDelegate.swift in Sources */,
 				042AEDD42447D9E400DA7177 /* MainViewPresenter.swift in Sources */,
 				042AEDD02447C8D900DA7177 /* TitleValueLabel.swift in Sources */,
+				04AF7E38244A3C72002E3842 /* DropDownPicker.swift in Sources */,
 				042AED9224479D1C00DA7177 /* SceneDelegate.swift in Sources */,
 				042AEDBA24479DDF00DA7177 /* MarsRoverDataClient.swift in Sources */,
 				04CDC7E224481255009614D5 /* RoverPhotos.swift in Sources */,

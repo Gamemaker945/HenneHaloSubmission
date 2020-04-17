@@ -116,50 +116,24 @@ class MainViewController: UIViewController, MainViewType {
         return view
     }()
     
-    private lazy var solLabel: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        label.textAlignment = .center
-        label.textColor = .white
-        label.text = "Pick a Sol"
-        label.numberOfLines = 0
-        return label
-    }()
     
-    private lazy var solPicker: UIPickerView = {
-        let picker = UIPickerView(frame: .zero)
+    private lazy var solPicker: DropDownPicker = {
+        let picker = DropDownPicker(frame: .zero)
         picker.delegate = self
         picker.dataSource = self
         picker.translatesAutoresizingMaskIntoConstraints = false
-        picker.setValue(UIColor.white, forKeyPath: "textColor")
+        picker.title = "Sol for photo:"
         return picker
     }()
     
-    private lazy var cameraLabel: UILabel = {
-        let label = UILabel(frame: .zero)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
-        label.textAlignment = .center
-        label.textColor = .white
-        label.text = "Pick a Camera"
-        label.numberOfLines = 0
-        return label
-    }()
     
-    private lazy var cameraPicker: UIPickerView = {
-        let picker = UIPickerView(frame: .zero)
+    private lazy var cameraPicker: DropDownPicker = {
+        let picker = DropDownPicker(frame: .zero)
         picker.delegate = self
         picker.dataSource = self
         picker.translatesAutoresizingMaskIntoConstraints = false
-        picker.setValue(UIColor.white, forKeyPath: "textColor")
+        picker.title = "Camera for photo:"
         return picker
-    }()
-    
-    private lazy var pickerContainer: UIView = {
-        let view = UIView(frame: .zero)
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
     }()
     
     private lazy var photoButton: UIButton = {
@@ -239,7 +213,7 @@ class MainViewController: UIViewController, MainViewType {
     @objc
     func photoButtonPressed() {
         guard let viewModel = viewModel, let manifest = viewModel.rover.manifest else { return }
-        let vc = PhotoViewController.make(roverName: viewModel.rover.name, solIndex: solPicker.selectedRow(inComponent: 0), camera: manifest.sols[activeSol].cameras[cameraPicker.selectedRow(inComponent: 0)])
+        let vc = PhotoViewController.make(roverName: viewModel.rover.name, solIndex: solPicker.selectedRow, camera: manifest.sols[activeSol].cameras[cameraPicker.selectedRow])
         navigationController?.pushViewController(vc, animated: false)
     }
 }
@@ -251,13 +225,9 @@ extension MainViewController: RoverPickerViewDelegate {
     }
 }
 
-extension MainViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+extension MainViewController: DropDownDataSource, DropDownPickerDelegate {
     
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func numberOfRowsIn(_ pickerView: DropDownPicker) -> Int {
         guard let manifest = viewModel?.rover.manifest else { return 0 }
         if pickerView == solPicker {
             return manifest.sols.count
@@ -266,7 +236,7 @@ extension MainViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         }
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func dropDownPicker(_ pickerView: DropDownPicker, titleForRow row: Int) -> String? {
         guard let manifest = viewModel?.rover.manifest else { return "" }
         if pickerView == solPicker {
             return "Sol \(row)"
@@ -275,7 +245,7 @@ extension MainViewController: UIPickerViewDelegate, UIPickerViewDataSource {
         }
     }
     
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func dropDownPicker(_ pickerView: DropDownPicker, didSelectRow row: Int) {
         if pickerView == solPicker {
             activeSol = row
             cameraPicker.reloadAllComponents()
@@ -295,16 +265,12 @@ private extension MainViewController {
         scrollView.addSubview(sectionTwoBackground)
         scrollView.addSubview(stackViewSectionTwo)
         
-        pickerContainer.addSubview(solLabel)
-        pickerContainer.addSubview(cameraLabel)
-        pickerContainer.addSubview(solPicker)
-        pickerContainer.addSubview(cameraPicker)
-        
         stackView.addArrangedSubview(descriptionLabel)
         stackView.addArrangedSubview(roverPickerView)
         stackView.addArrangedSubview(roverManifestView)
         
-        stackViewSectionTwo.addArrangedSubview(pickerContainer)
+        stackViewSectionTwo.addArrangedSubview(solPicker)
+        stackViewSectionTwo.addArrangedSubview(cameraPicker)
         stackViewSectionTwo.addArrangedSubview(photoButton)
         
         stackView.setCustomSpacing(20, after: descriptionLabel)
@@ -347,28 +313,6 @@ private extension MainViewController {
         
         photoButton.snp.makeConstraints {
             $0.height.equalTo(Constants.Margins.sectionSeparation)
-        }
-
-        solLabel.snp.makeConstraints {
-            $0.top.leading.equalTo(pickerContainer)
-            $0.height.equalTo(Constants.Sizes.pickerLabelHeight)
-            $0.width.equalTo(pickerContainer).multipliedBy(0.5)
-        }
-        
-        solPicker.snp.makeConstraints {
-            $0.top.leading.width.equalTo(solLabel)
-            $0.bottom.equalTo(pickerContainer)
-        }
-        
-        cameraLabel.snp.makeConstraints {
-            $0.top.trailing.equalTo(pickerContainer)
-            $0.height.equalTo(Constants.Sizes.pickerLabelHeight)
-            $0.width.equalTo(pickerContainer).multipliedBy(0.5)
-        }
-        
-        cameraPicker.snp.makeConstraints {
-            $0.top.trailing.width.equalTo(cameraLabel)
-            $0.bottom.equalTo(pickerContainer)
         }
     }
     
