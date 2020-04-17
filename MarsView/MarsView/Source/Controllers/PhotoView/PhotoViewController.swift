@@ -75,10 +75,9 @@ class PhotoViewController: UIViewController, PhotoViewType {
     }
     
     // MARK: - Static Factory Methods
-    
-    static func make(roverName: String, solIndex: Int, camera: String) -> PhotoViewController {
+    static func make(roverName: String, solIndex: Int, camera: String, marsRoverDataService: MarsRoverDataService) -> PhotoViewController {
         let viewController = PhotoViewController()
-        let presenter = PhotoViewPresenter(view: viewController, roverName: roverName, solIndex: solIndex, camera: camera, marsRoverDataService: MarsRoverDataService(manifestClient: MarsRoverManifestClient(), photoClient: MarsRoverPhotoClient()))
+        let presenter = PhotoViewPresenter(view: viewController, roverName: roverName, solIndex: solIndex, camera: camera, marsRoverDataService: marsRoverDataService)
         viewController.presenter = presenter
         return viewController
     }
@@ -157,12 +156,13 @@ extension PhotoViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
 private extension PhotoViewController {
-    func addUIElements() {
+    
+    private func addUIElements() {
         view.addSubview(table)
         view.addSubview(noImagesLabel)
     }
     
-    func layoutUIElements() {
+    private func layoutUIElements() {
         
         table.snp.makeConstraints {
             $0.edges.equalToSuperview()

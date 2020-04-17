@@ -10,7 +10,6 @@ import Foundation
 import PromiseKit
 
 protocol MainViewPresenterType {
-    
     func viewDidLoad()
     func roverSelected(_ rover: RoverModel)
 }
@@ -70,21 +69,6 @@ private extension MainViewPresenter {
             self?.view?.showError(error)
             return
         }
-        
-//        dataService.getRoverManifest(using: rover) { [weak self] (manifest, error) in
-//            
-//            DispatchQueue.main.async { [weak self] in
-//                
-//                if error != nil {
-//                    self?.view?.showError(error!)
-//                    return
-//                }
-//                
-//                guard let self = self else { return }
-//                rover.manifest = manifest?.photo_manifest
-//                self.updateViewForRover(rover)
-//            }
-//        }
     }
     
     private func updateViewForRover(_ rover: RoverModel?) {

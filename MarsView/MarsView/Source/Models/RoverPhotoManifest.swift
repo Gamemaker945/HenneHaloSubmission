@@ -45,6 +45,17 @@ struct RoverManifest: Codable {
         sols = try values.decode([RoverManifestPhotoSol].self, forKey: .sols)
     }
     
+    init(name: String, landingDate: String, launchDate: String, status: String, maxSol: Int, maxDate: String, totalPhotos: Int, sols: [RoverManifestPhotoSol]) {
+        self.name = name
+        self.landingDate = landingDate
+        self.launchDate = launchDate
+        self.status = status
+        self.maxSol = maxSol
+        self.maxDate = maxDate
+        self.totalPhotos = totalPhotos
+        self.sols = sols
+    }
+    
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(name, forKey: .name)
@@ -70,6 +81,13 @@ struct RoverManifestPhotoSol: Codable {
         case earthDate = "earth_date"
         case totalPhotos = "total_photos"
         case cameras
+    }
+    
+    init(sol: Int, earthDate: String, totalPhotos: Int, cameras: [String]) {
+        self.sol = sol
+        self.earthDate = earthDate
+        self.totalPhotos = totalPhotos
+        self.cameras = cameras
     }
     
     init(from decoder: Decoder) throws {

@@ -17,3 +17,7 @@ end
 target 'MarsView' do
 myPods
 end
+
+target 'MarsViewTests' do
+myPods
+end

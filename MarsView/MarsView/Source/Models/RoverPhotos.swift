@@ -27,6 +27,14 @@ struct RoverPhoto: Codable {
         case earthDate = "earth_date"
     }
     
+    init(id: Int, sol: Int, camera: RoverCamera, imgSrc: String, earthDate: String) {
+        self.id = id
+        self.sol = sol
+        self.camera = camera
+        self.imgSrc = imgSrc
+        self.earthDate = earthDate
+    }
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decode(Int.self, forKey: .id)
@@ -58,6 +66,13 @@ struct RoverCamera: Codable {
         case name
         case roverID = "rover_id"
         case fullName = "full_name"
+    }
+    
+    init(id: Int, name: String, roverID: Int, fullName: String) {
+        self.id = id
+        self.name = name
+        self.roverID = roverID
+        self.fullName = fullName
     }
     
     init(from decoder: Decoder) throws {

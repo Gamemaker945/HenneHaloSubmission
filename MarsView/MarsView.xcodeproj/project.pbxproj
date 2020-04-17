@@ -14,7 +14,7 @@
 		042AED9C24479D1D00DA7177 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 042AED9B24479D1D00DA7177 /* Assets.xcassets */; };
 		042AED9F24479D1D00DA7177 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 042AED9D24479D1D00DA7177 /* LaunchScreen.storyboard */; };
 		042AEDAA24479D1D00DA7177 /* MarsViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AEDA924479D1D00DA7177 /* MarsViewTests.swift */; };
-		042AEDBA24479DDF00DA7177 /* MarsRoverDataClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AEDB924479DDF00DA7177 /* MarsRoverDataClient.swift */; };
+		042AEDBA24479DDF00DA7177 /* MarsRoverManifestClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AEDB924479DDF00DA7177 /* MarsRoverManifestClient.swift */; };
 		042AEDBD24479FB800DA7177 /* RoverModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AEDBC24479FB800DA7177 /* RoverModel.swift */; };
 		042AEDC12447A3A600DA7177 /* RoverPhotoManifest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AEDC02447A3A600DA7177 /* RoverPhotoManifest.swift */; };
 		042AEDC52447A77A00DA7177 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AEDC42447A77A00DA7177 /* MainViewController.swift */; };
@@ -32,9 +32,15 @@
 		04ADC35A244A2C92008644CA /* MarsRoverPhotoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADC359244A2C92008644CA /* MarsRoverPhotoClient.swift */; };
 		04AF7E38244A3C72002E3842 /* DropDownPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF7E37244A3C72002E3842 /* DropDownPicker.swift */; };
 		04AF7E3A244A492E002E3842 /* DropDownPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF7E39244A492E002E3842 /* DropDownPickerCell.swift */; };
+		04AF7E3C244A673F002E3842 /* MarsRoverManifestClientMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF7E3B244A673F002E3842 /* MarsRoverManifestClientMock.swift */; };
+		04AF7E3E244A69E5002E3842 /* MarsRoverPhotoClientMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF7E3D244A69E5002E3842 /* MarsRoverPhotoClientMock.swift */; };
+		04AF7E40244A6AF5002E3842 /* MarsRoverDataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF7E3F244A6AF5002E3842 /* MarsRoverDataServiceTests.swift */; };
+		04AF7E44244A7018002E3842 /* MainViewPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF7E43244A7018002E3842 /* MainViewPresenterTests.swift */; };
+		04AF7E47244A751A002E3842 /* PhotoViewPresenterUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF7E46244A751A002E3842 /* PhotoViewPresenterUnitTests.swift */; };
 		04CDC7E224481255009614D5 /* RoverPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDC7E124481255009614D5 /* RoverPhotos.swift */; };
 		04CDC7E424489E5F009614D5 /* PhotoViewTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDC7E324489E5F009614D5 /* PhotoViewTableHeaderView.swift */; };
 		04CDC7E62448A0D0009614D5 /* PhotoViewTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDC7E52448A0D0009614D5 /* PhotoViewTableCell.swift */; };
+		8A3C73A3A7FFD102C5D768CD /* Pods_MarsViewTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 293300BF146BCD752B09EC41 /* Pods_MarsViewTests.framework */; };
 		E7DE6D3B62BED0C8756224DA /* Pods_MarsView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E060C23BC372B76E61E5849 /* Pods_MarsView.framework */; };
 /* End PBXBuildFile section */
 
@@ -60,7 +66,7 @@
 		042AEDA524479D1D00DA7177 /* MarsViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarsViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		042AEDA924479D1D00DA7177 /* MarsViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsViewTests.swift; sourceTree = "<group>"; };
 		042AEDAB24479D1D00DA7177 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		042AEDB924479DDF00DA7177 /* MarsRoverDataClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsRoverDataClient.swift; sourceTree = "<group>"; };
+		042AEDB924479DDF00DA7177 /* MarsRoverManifestClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsRoverManifestClient.swift; sourceTree = "<group>"; };
 		042AEDBC24479FB800DA7177 /* RoverModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverModel.swift; sourceTree = "<group>"; };
 		042AEDC02447A3A600DA7177 /* RoverPhotoManifest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverPhotoManifest.swift; sourceTree = "<group>"; };
 		042AEDC42447A77A00DA7177 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -78,12 +84,20 @@
 		04ADC359244A2C92008644CA /* MarsRoverPhotoClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarsRoverPhotoClient.swift; sourceTree = "<group>"; };
 		04AF7E37244A3C72002E3842 /* DropDownPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownPicker.swift; sourceTree = "<group>"; };
 		04AF7E39244A492E002E3842 /* DropDownPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownPickerCell.swift; sourceTree = "<group>"; };
+		04AF7E3B244A673F002E3842 /* MarsRoverManifestClientMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsRoverManifestClientMock.swift; sourceTree = "<group>"; };
+		04AF7E3D244A69E5002E3842 /* MarsRoverPhotoClientMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsRoverPhotoClientMock.swift; sourceTree = "<group>"; };
+		04AF7E3F244A6AF5002E3842 /* MarsRoverDataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsRoverDataServiceTests.swift; sourceTree = "<group>"; };
+		04AF7E43244A7018002E3842 /* MainViewPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewPresenterTests.swift; sourceTree = "<group>"; };
+		04AF7E46244A751A002E3842 /* PhotoViewPresenterUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewPresenterUnitTests.swift; sourceTree = "<group>"; };
 		04CDC7E124481255009614D5 /* RoverPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverPhotos.swift; sourceTree = "<group>"; };
 		04CDC7E324489E5F009614D5 /* PhotoViewTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewTableHeaderView.swift; sourceTree = "<group>"; };
 		04CDC7E52448A0D0009614D5 /* PhotoViewTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewTableCell.swift; sourceTree = "<group>"; };
+		293300BF146BCD752B09EC41 /* Pods_MarsViewTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarsViewTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3D1CECD1721387416A85C96A /* Pods-MarsView.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarsView.debug.xcconfig"; path = "Target Support Files/Pods-MarsView/Pods-MarsView.debug.xcconfig"; sourceTree = "<group>"; };
 		6E060C23BC372B76E61E5849 /* Pods_MarsView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarsView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		92D2437639F79BBFF59E77BE /* Pods-MarsViewTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarsViewTests.debug.xcconfig"; path = "Target Support Files/Pods-MarsViewTests/Pods-MarsViewTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C3A2EFF276E6720D82F3925E /* Pods-MarsView.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarsView.release.xcconfig"; path = "Target Support Files/Pods-MarsView/Pods-MarsView.release.xcconfig"; sourceTree = "<group>"; };
+		D99F968D28B5CD4C3E88D1CC /* Pods-MarsViewTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarsViewTests.release.xcconfig"; path = "Target Support Files/Pods-MarsViewTests/Pods-MarsViewTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +113,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A3C73A3A7FFD102C5D768CD /* Pods_MarsViewTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,8 +155,12 @@
 		042AEDA824479D1D00DA7177 /* MarsViewTests */ = {
 			isa = PBXGroup;
 			children = (
+				04AF7E45244A7061002E3842 /* Mocks */,
 				042AEDA924479D1D00DA7177 /* MarsViewTests.swift */,
 				042AEDAB24479D1D00DA7177 /* Info.plist */,
+				04AF7E3F244A6AF5002E3842 /* MarsRoverDataServiceTests.swift */,
+				04AF7E43244A7018002E3842 /* MainViewPresenterTests.swift */,
+				04AF7E46244A751A002E3842 /* PhotoViewPresenterUnitTests.swift */,
 			);
 			path = MarsViewTests;
 			sourceTree = "<group>";
@@ -182,7 +201,7 @@
 			children = (
 				04ADC357244A2C87008644CA /* MarsRoverBaseDataClient.swift */,
 				04ADC359244A2C92008644CA /* MarsRoverPhotoClient.swift */,
-				042AEDB924479DDF00DA7177 /* MarsRoverDataClient.swift */,
+				042AEDB924479DDF00DA7177 /* MarsRoverManifestClient.swift */,
 				042AEDD12447D50600DA7177 /* MarsRoverDataService.swift */,
 			);
 			path = API;
@@ -273,6 +292,15 @@
 			path = DropDownPicker;
 			sourceTree = "<group>";
 		};
+		04AF7E45244A7061002E3842 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				04AF7E3B244A673F002E3842 /* MarsRoverManifestClientMock.swift */,
+				04AF7E3D244A69E5002E3842 /* MarsRoverPhotoClientMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		04CDC7E02448123A009614D5 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
@@ -286,6 +314,8 @@
 			children = (
 				3D1CECD1721387416A85C96A /* Pods-MarsView.debug.xcconfig */,
 				C3A2EFF276E6720D82F3925E /* Pods-MarsView.release.xcconfig */,
+				92D2437639F79BBFF59E77BE /* Pods-MarsViewTests.debug.xcconfig */,
+				D99F968D28B5CD4C3E88D1CC /* Pods-MarsViewTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -294,6 +324,7 @@
 			isa = PBXGroup;
 			children = (
 				6E060C23BC372B76E61E5849 /* Pods_MarsView.framework */,
+				293300BF146BCD752B09EC41 /* Pods_MarsViewTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -324,9 +355,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 042AEDB124479D1D00DA7177 /* Build configuration list for PBXNativeTarget "MarsViewTests" */;
 			buildPhases = (
+				A7A25033AE187D9283E152E3 /* [CP] Check Pods Manifest.lock */,
 				042AEDA124479D1D00DA7177 /* Sources */,
 				042AEDA224479D1D00DA7177 /* Frameworks */,
 				042AEDA324479D1D00DA7177 /* Resources */,
+				6E5C8921E4634D392F583251 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -436,6 +469,45 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MarsView/Pods-MarsView-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		6E5C8921E4634D392F583251 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MarsViewTests/Pods-MarsViewTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MarsViewTests/Pods-MarsViewTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MarsViewTests/Pods-MarsViewTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A7A25033AE187D9283E152E3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MarsViewTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -463,7 +535,7 @@
 				042AEDD02447C8D900DA7177 /* TitleValueLabel.swift in Sources */,
 				04AF7E38244A3C72002E3842 /* DropDownPicker.swift in Sources */,
 				042AED9224479D1C00DA7177 /* SceneDelegate.swift in Sources */,
-				042AEDBA24479DDF00DA7177 /* MarsRoverDataClient.swift in Sources */,
+				042AEDBA24479DDF00DA7177 /* MarsRoverManifestClient.swift in Sources */,
 				04CDC7E224481255009614D5 /* RoverPhotos.swift in Sources */,
 				042AED9A24479D1C00DA7177 /* MarsView.xcdatamodeld in Sources */,
 				042AEDC52447A77A00DA7177 /* MainViewController.swift in Sources */,
@@ -474,7 +546,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04AF7E47244A751A002E3842 /* PhotoViewPresenterUnitTests.swift in Sources */,
+				04AF7E44244A7018002E3842 /* MainViewPresenterTests.swift in Sources */,
+				04AF7E3E244A69E5002E3842 /* MarsRoverPhotoClientMock.swift in Sources */,
+				04AF7E40244A6AF5002E3842 /* MarsRoverDataServiceTests.swift in Sources */,
 				042AEDAA24479D1D00DA7177 /* MarsViewTests.swift in Sources */,
+				04AF7E3C244A673F002E3842 /* MarsRoverManifestClientMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -662,6 +739,7 @@
 		};
 		042AEDB224479D1D00DA7177 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 92D2437639F79BBFF59E77BE /* Pods-MarsViewTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -684,6 +762,7 @@
 		};
 		042AEDB324479D1D00DA7177 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D99F968D28B5CD4C3E88D1CC /* Pods-MarsViewTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

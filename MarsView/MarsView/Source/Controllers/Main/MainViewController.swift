@@ -163,6 +163,14 @@ class MainViewController: UIViewController, MainViewType {
         }
     }
     
+    // MARK: - Static Factory Methods
+    static func make(marsRoverDataService: MarsRoverDataService) -> MainViewController {
+        let viewController = MainViewController()
+        let presenter = MainViewPresenter(view: viewController, marsRoverDataService: marsRoverDataService)
+        viewController.presenter = presenter
+        return viewController
+    }
+    
     // MARK: - Lifecycle Functions
     
     override func viewDidLoad() {
@@ -170,7 +178,9 @@ class MainViewController: UIViewController, MainViewType {
         
         title = "MARS VIEW"
         
-        presenter = MainViewPresenter(view: self, marsRoverDataService: MarsRoverDataService(manifestClient: MarsRoverManifestClient(), photoClient: MarsRoverPhotoClient()))
+        if (presenter == nil) {
+            presenter = MainViewPresenter(view: self, marsRoverDataService: MarsRoverDataService(manifestClient: MarsRoverManifestClient(), photoClient: MarsRoverPhotoClient()))
+        }
         
         addUIElements()
         layoutUIElements()
@@ -213,7 +223,8 @@ class MainViewController: UIViewController, MainViewType {
     @objc
     func photoButtonPressed() {
         guard let viewModel = viewModel, let manifest = viewModel.rover.manifest else { return }
-        let vc = PhotoViewController.make(roverName: viewModel.rover.name, solIndex: solPicker.selectedRow, camera: manifest.sols[activeSol].cameras[cameraPicker.selectedRow])
+        let vc = PhotoViewController.make(roverName: viewModel.rover.name, solIndex: solPicker.selectedRow, camera: manifest.sols[activeSol].cameras[cameraPicker.selectedRow],
+                                          marsRoverDataService: MarsRoverDataService(manifestClient: MarsRoverManifestClient(), photoClient: MarsRoverPhotoClient()))
         navigationController?.pushViewController(vc, animated: false)
     }
 }

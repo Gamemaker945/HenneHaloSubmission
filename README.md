@@ -27,6 +27,6 @@ Breaks down responsibility
 Allows for the service to be injected with a client(s) making Unit Testing of the service easy
 The primary view controllers use presenters for data handling. This also makes Unit testing of data portions of the View Controllers easy.
 
-Note: Unit tests have not been provided but can upon request.
+Note: Unit tests have been included for the API and the Presenters.
 
 I hope you enjoy this submission. If there is anything you would like to see done differently, or it you would like further explanation of design, please don't hesitate to reach out.
