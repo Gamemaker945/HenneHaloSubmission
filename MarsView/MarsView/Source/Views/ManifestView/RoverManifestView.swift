@@ -34,6 +34,13 @@ class RoverManifestView: UIView {
         return label
     }()
     
+    private lazy var separator: UIView = {
+        let view = UIView(frame: .zero)
+        view.backgroundColor = .lightGray
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     private lazy var nameLabel: TitleValueLabel = {
         let label = TitleValueLabel(frame: .zero)
         label.title = "Name:"
@@ -113,6 +120,7 @@ private extension RoverManifestView {
         self.addSubview(stackView)
         
         stackView.addArrangedSubview(titleLabel)
+        stackView.addArrangedSubview(separator)
         stackView.addArrangedSubview(nameLabel)
         stackView.addArrangedSubview(landingDateLabel)
         stackView.addArrangedSubview(launchDateLabel)
@@ -127,6 +135,10 @@ private extension RoverManifestView {
     private func setConstraints() {
         stackView.snp.makeConstraints {
             $0.edges.equalToSuperview()
+        }
+        
+        separator.snp.makeConstraints {
+            $0.height.equalTo(1)
         }
     }
 }

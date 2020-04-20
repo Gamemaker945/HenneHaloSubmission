@@ -62,7 +62,7 @@ class DropDownPicker: UIView {
     
     private lazy var arrow: UIImageView = {
         let img = UIImageView(frame: .zero)
-        let image = UIImage(cgImage: UIImage(named: "arrow")!.cgImage!, scale: CGFloat(1.0), orientation: .up)
+        let image = UIImage(cgImage: UIImage(named: "arrow")!.cgImage!, scale: CGFloat(1.0), orientation: .down)
         img.image = image
         img.translatesAutoresizingMaskIntoConstraints = false
         return img
@@ -237,14 +237,14 @@ private extension DropDownPicker {
     }
     
     private func openTable() {
-        arrow.image = UIImage(cgImage: UIImage(named: "arrow")!.cgImage!, scale: CGFloat(1.0), orientation: .down)
+        arrow.image = UIImage(cgImage: UIImage(named: "arrow")!.cgImage!, scale: CGFloat(1.0), orientation: .up)
         table.snp.remakeConstraints{
             $0.height.equalTo(getMaxTableHeight()).priority(.high)
         }
     }
     
     private func closeTable() {
-        arrow.image = UIImage(cgImage: UIImage(named: "arrow")!.cgImage!, scale: CGFloat(1.0), orientation: .up)
+        arrow.image = UIImage(cgImage: UIImage(named: "arrow")!.cgImage!, scale: CGFloat(1.0), orientation: .down)
         table.snp.remakeConstraints{
             $0.height.equalTo(0).priority(.high)
         }

@@ -28,12 +28,9 @@ class LoadingView: UIView {
         return view
     }()
     
-    private lazy var indicator: UIActivityIndicatorView = {
-        let view = UIActivityIndicatorView(style: .large)
-        view.tintColor = .black
-        view.hidesWhenStopped = true
+    private lazy var indicator: AnimatedLoadingIndicator = {
+        let view = AnimatedLoadingIndicator(frame: .zero)
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.startAnimating()
         return view
     }()
     
@@ -60,10 +57,18 @@ class LoadingView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        stopAnim()
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
         centerView.layer.cornerRadius = 10
+    }
+    
+    public func stopAnim() {
+        indicator.stopAnim()
     }
     
 }
@@ -78,6 +83,7 @@ private extension LoadingView {
         centerView.addSubview(loadingLabel)
         
         setConstraints()
+        indicator.startAnim()
     }
 
     private func setConstraints() {
@@ -91,12 +97,14 @@ private extension LoadingView {
         }
         
         indicator.snp.makeConstraints {
-            $0.centerX.centerY.equalTo(centerView)
+            $0.centerX.equalTo(centerView)
+            $0.centerY.equalTo(centerView).offset(-4)
+            $0.width.height.equalTo(centerView).inset(10)
         }
         
         loadingLabel.snp.makeConstraints {
             $0.leading.trailing.equalTo(centerView)
-            $0.top.equalTo(indicator.snp.bottom).offset(5)
+            $0.top.equalTo(indicator.snp.bottom).offset(-8)
             $0.height.equalTo(20)
         }
     }

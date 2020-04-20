@@ -10,13 +10,8 @@ import Foundation
 import UIKit
 import SnapKit
 
-protocol MainViewType: class {
+protocol MainViewType: BaseViewType {
     var viewModel: MainViewModel? { get set }
-    
-    func showLoading()
-    func hideLoading()
-    
-    func showError(_ error: Error)
 }
 
 struct MainViewModel {

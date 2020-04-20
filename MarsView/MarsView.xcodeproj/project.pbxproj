@@ -37,6 +37,8 @@
 		04AF7E40244A6AF5002E3842 /* MarsRoverDataServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF7E3F244A6AF5002E3842 /* MarsRoverDataServiceTests.swift */; };
 		04AF7E44244A7018002E3842 /* MainViewPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF7E43244A7018002E3842 /* MainViewPresenterTests.swift */; };
 		04AF7E47244A751A002E3842 /* PhotoViewPresenterUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF7E46244A751A002E3842 /* PhotoViewPresenterUnitTests.swift */; };
+		04AF7E49244E1EB3002E3842 /* AnimatedLoadingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF7E48244E1EB3002E3842 /* AnimatedLoadingIndicator.swift */; };
+		04AF7E4B244E283E002E3842 /* BaseViewType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF7E4A244E283E002E3842 /* BaseViewType.swift */; };
 		04CDC7E224481255009614D5 /* RoverPhotos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDC7E124481255009614D5 /* RoverPhotos.swift */; };
 		04CDC7E424489E5F009614D5 /* PhotoViewTableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDC7E324489E5F009614D5 /* PhotoViewTableHeaderView.swift */; };
 		04CDC7E62448A0D0009614D5 /* PhotoViewTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CDC7E52448A0D0009614D5 /* PhotoViewTableCell.swift */; };
@@ -89,6 +91,8 @@
 		04AF7E3F244A6AF5002E3842 /* MarsRoverDataServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsRoverDataServiceTests.swift; sourceTree = "<group>"; };
 		04AF7E43244A7018002E3842 /* MainViewPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewPresenterTests.swift; sourceTree = "<group>"; };
 		04AF7E46244A751A002E3842 /* PhotoViewPresenterUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewPresenterUnitTests.swift; sourceTree = "<group>"; };
+		04AF7E48244E1EB3002E3842 /* AnimatedLoadingIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedLoadingIndicator.swift; sourceTree = "<group>"; };
+		04AF7E4A244E283E002E3842 /* BaseViewType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewType.swift; sourceTree = "<group>"; };
 		04CDC7E124481255009614D5 /* RoverPhotos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverPhotos.swift; sourceTree = "<group>"; };
 		04CDC7E324489E5F009614D5 /* PhotoViewTableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewTableHeaderView.swift; sourceTree = "<group>"; };
 		04CDC7E52448A0D0009614D5 /* PhotoViewTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewTableCell.swift; sourceTree = "<group>"; };
@@ -168,6 +172,7 @@
 		042AEDB424479D3400DA7177 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				04CDC7E02448123A009614D5 /* Managers */,
 				042AEDDA244805A400DA7177 /* Controllers */,
 				042AEDC62447AB6300DA7177 /* Views */,
 				042AEDBB24479F9800DA7177 /* Models */,
@@ -249,6 +254,7 @@
 			isa = PBXGroup;
 			children = (
 				042AEDD62447DD7400DA7177 /* LoadingView.swift */,
+				04AF7E48244E1EB3002E3842 /* AnimatedLoadingIndicator.swift */,
 			);
 			path = Loading;
 			sourceTree = "<group>";
@@ -256,9 +262,9 @@
 		042AEDDA244805A400DA7177 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				04CDC7E02448123A009614D5 /* Managers */,
 				042AEDB624479D6700DA7177 /* Main */,
 				042AEDDB244805BA00DA7177 /* PhotoView */,
+				04AF7E4A244E283E002E3842 /* BaseViewType.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -526,6 +532,7 @@
 				042AEDDD244805DB00DA7177 /* PhotoViewPresenter.swift in Sources */,
 				042AEDD72447DD7400DA7177 /* LoadingView.swift in Sources */,
 				042AEDCE2447C82800DA7177 /* RoverManifestView.swift in Sources */,
+				04AF7E4B244E283E002E3842 /* BaseViewType.swift in Sources */,
 				042AEDCB2447B02A00DA7177 /* RoverPickerView.swift in Sources */,
 				042AEDDF2448061000DA7177 /* PhotoViewController.swift in Sources */,
 				042AEDC12447A3A600DA7177 /* RoverPhotoManifest.swift in Sources */,
@@ -535,6 +542,7 @@
 				042AEDD02447C8D900DA7177 /* TitleValueLabel.swift in Sources */,
 				04AF7E38244A3C72002E3842 /* DropDownPicker.swift in Sources */,
 				042AED9224479D1C00DA7177 /* SceneDelegate.swift in Sources */,
+				04AF7E49244E1EB3002E3842 /* AnimatedLoadingIndicator.swift in Sources */,
 				042AEDBA24479DDF00DA7177 /* MarsRoverManifestClient.swift in Sources */,
 				04CDC7E224481255009614D5 /* RoverPhotos.swift in Sources */,
 				042AED9A24479D1C00DA7177 /* MarsView.xcdatamodeld in Sources */,

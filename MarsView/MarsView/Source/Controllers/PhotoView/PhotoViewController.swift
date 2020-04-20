@@ -9,13 +9,8 @@
 import Foundation
 import UIKit
 
-protocol PhotoViewType: class {
+protocol PhotoViewType: BaseViewType {
     var viewModel: PhotoViewModel? { get set }
-    
-    func showLoading()
-    func hideLoading()
-    
-    func showError(_ error: Error)
 }
 
 struct PhotoViewModel {
