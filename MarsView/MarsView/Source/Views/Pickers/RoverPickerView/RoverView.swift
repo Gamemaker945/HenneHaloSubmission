@@ -129,8 +129,8 @@ private extension RoverView {
         }
         
         roverImage.snp.makeConstraints {
+            $0.width.equalToSuperview()
             $0.height.equalTo(roverImage.snp.width)
         }
     }
-    
 }

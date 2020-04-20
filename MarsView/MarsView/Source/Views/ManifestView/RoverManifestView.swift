@@ -28,7 +28,7 @@ class RoverManifestView: UIView {
         let label = UILabel(frame: .zero)
         label.font = UIFont.systemFont(ofSize: 16, weight: .bold)
         label.textAlignment = .left
-        label.textColor = .black
+        label.textColor = .white
         label.text = "Manifest"
         label.numberOfLines = 1
         return label
