@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 struct RoverPhotoManifest: Codable {
     let photo_manifest: RoverManifest
@@ -45,6 +46,24 @@ struct RoverManifest: Codable {
         sols = try values.decode([RoverManifestPhotoSol].self, forKey: .sols)
     }
     
+    init(from entity: RoverManifestEntity) {
+        name = entity.name ?? ""
+        landingDate = entity.landing_date ?? ""
+        launchDate = entity.launch_date ?? ""
+        status = entity.status ?? ""
+        maxSol = Int(entity.max_sol)
+        maxDate = entity.max_date ?? ""
+        totalPhotos = Int(entity.total_photos)
+        
+        if let solsEntities = entity.photos {
+            sols = solsEntities.map {
+                return RoverManifestPhotoSol(from: $0 as! RoverManifestPhotoSolEntity)
+            }
+        } else {
+            sols = []
+        }
+    }
+    
     init(name: String, landingDate: String, launchDate: String, status: String, maxSol: Int, maxDate: String, totalPhotos: Int, sols: [RoverManifestPhotoSol]) {
         self.name = name
         self.landingDate = landingDate
@@ -66,6 +85,23 @@ struct RoverManifest: Codable {
         try container.encode(maxDate, forKey: .maxDate)
         try container.encode(totalPhotos, forKey: .totalPhotos)
         try container.encode(sols, forKey: .sols)
+    }
+    
+    func encode(to entity: RoverManifestEntity, using context: NSManagedObjectContext) {
+        entity.name = name
+        entity.landing_date = landingDate
+        entity.launch_date = launchDate
+        entity.status = status
+        entity.max_sol = Int64(maxSol)
+        entity.max_date = maxDate
+        entity.total_photos = Int64(totalPhotos)
+        
+        let solEntities = entity.mutableSetValue(forKeyPath: #keyPath(RoverManifestEntity.photos))
+        for sol in sols {
+            let solEntity = RoverManifestPhotoSolEntity(context: context)
+            sol.encode(to: solEntity)
+            solEntities.add(solEntity)
+        }
     }
 }
 
@@ -90,6 +126,13 @@ struct RoverManifestPhotoSol: Codable {
         self.cameras = cameras
     }
     
+    init(from entity: RoverManifestPhotoSolEntity) {
+        sol = Int(entity.sol)
+        earthDate = entity.earth_date ?? ""
+        totalPhotos = Int(entity.total_photos)
+        cameras = entity.cameras ?? []
+    }
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         sol = try values.decode(Int.self, forKey: .sol)
@@ -109,5 +152,12 @@ struct RoverManifestPhotoSol: Codable {
         try container.encode(earthDate, forKey: .earthDate)
         try container.encode(totalPhotos, forKey: .totalPhotos)
         try container.encode(cameras, forKey: .cameras)
+    }
+    
+    func encode(to entity: RoverManifestPhotoSolEntity) {
+        entity.sol = Int32(sol)
+        entity.earth_date = earthDate
+        entity.total_photos = Int32(totalPhotos)
+        entity.cameras = cameras
     }
 }

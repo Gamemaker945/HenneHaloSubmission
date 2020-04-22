@@ -1,4 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19E287" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <elements/>
+    <entity name="RoverCameraEntity" representedClassName=".RoverCameraEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="full_name" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="rover_id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="RoverManifestEntity" representedClassName="RoverManifestEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="landing_date" optional="YES" attributeType="String"/>
+        <attribute name="launch_date" optional="YES" attributeType="String"/>
+        <attribute name="max_date" optional="YES" attributeType="String"/>
+        <attribute name="max_sol" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="status" optional="YES" attributeType="String"/>
+        <attribute name="total_photos" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RoverManifestPhotoSolEntity"/>
+    </entity>
+    <entity name="RoverManifestPhotoSolEntity" representedClassName="RoverManifestPhotoSolEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="cameras" optional="YES" attributeType="Transformable" customClassName="Array&lt;String&gt;"/>
+        <attribute name="earth_date" optional="YES" attributeType="String"/>
+        <attribute name="sol" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="total_photos" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="RoverPhotoEntity" representedClassName=".RoverPhotoEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="earth_date" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="image_src" optional="YES" attributeType="String"/>
+        <attribute name="sol" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="camera" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="RoverCameraEntity"/>
+    </entity>
+    <entity name="RoverPhotosEntity" representedClassName=".RoverPhotosEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="url" optional="YES" attributeType="String"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RoverPhotoEntity"/>
+    </entity>
+    <elements>
+        <element name="RoverCameraEntity" positionX="-194.5625" positionY="128.12890625" width="128" height="103"/>
+        <element name="RoverManifestEntity" positionX="-405.62890625" positionY="-297.11328125" width="128" height="163"/>
+        <element name="RoverManifestPhotoSolEntity" positionX="-690.0078125" positionY="-26.06640625" width="128" height="103"/>
+        <element name="RoverPhotoEntity" positionX="-416.59765625" positionY="102.33984375" width="128" height="118"/>
+        <element name="RoverPhotosEntity" positionX="-125.515625" positionY="-46.82421875" width="128" height="73"/>
+    </elements>
 </model>

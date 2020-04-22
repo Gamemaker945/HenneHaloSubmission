@@ -28,6 +28,7 @@
 		042AEDD92447FB7700DA7177 /* RoverManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AEDD82447FB7700DA7177 /* RoverManager.swift */; };
 		042AEDDD244805DB00DA7177 /* PhotoViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AEDDC244805DB00DA7177 /* PhotoViewPresenter.swift */; };
 		042AEDDF2448061000DA7177 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042AEDDE2448061000DA7177 /* PhotoViewController.swift */; };
+		045836A4244FB03C005D0497 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045836A3244FB03C005D0497 /* Reachability.swift */; };
 		04ADC358244A2C87008644CA /* MarsRoverBaseDataClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADC357244A2C87008644CA /* MarsRoverBaseDataClient.swift */; };
 		04ADC35A244A2C92008644CA /* MarsRoverPhotoClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ADC359244A2C92008644CA /* MarsRoverPhotoClient.swift */; };
 		04AF7E38244A3C72002E3842 /* DropDownPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AF7E37244A3C72002E3842 /* DropDownPicker.swift */; };
@@ -82,6 +83,7 @@
 		042AEDD82447FB7700DA7177 /* RoverManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoverManager.swift; sourceTree = "<group>"; };
 		042AEDDC244805DB00DA7177 /* PhotoViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewPresenter.swift; sourceTree = "<group>"; };
 		042AEDDE2448061000DA7177 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
+		045836A3244FB03C005D0497 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		04ADC357244A2C87008644CA /* MarsRoverBaseDataClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarsRoverBaseDataClient.swift; sourceTree = "<group>"; };
 		04ADC359244A2C92008644CA /* MarsRoverPhotoClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarsRoverPhotoClient.swift; sourceTree = "<group>"; };
 		04AF7E37244A3C72002E3842 /* DropDownPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownPicker.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 		042AEDB424479D3400DA7177 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				045836A2244FB016005D0497 /* Utils */,
 				04CDC7E02448123A009614D5 /* Managers */,
 				042AEDDA244805A400DA7177 /* Controllers */,
 				042AEDC62447AB6300DA7177 /* Views */,
@@ -278,6 +281,14 @@
 				04CDC7E52448A0D0009614D5 /* PhotoViewTableCell.swift */,
 			);
 			path = PhotoView;
+			sourceTree = "<group>";
+		};
+		045836A2244FB016005D0497 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				045836A3244FB03C005D0497 /* Reachability.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		04AF7E35244A3C17002E3842 /* Pickers */ = {
@@ -526,6 +537,7 @@
 				042AEDD22447D50600DA7177 /* MarsRoverDataService.swift in Sources */,
 				042AEDC92447ACEE00DA7177 /* RoverView.swift in Sources */,
 				04CDC7E62448A0D0009614D5 /* PhotoViewTableCell.swift in Sources */,
+				045836A4244FB03C005D0497 /* Reachability.swift in Sources */,
 				042AEDD92447FB7700DA7177 /* RoverManager.swift in Sources */,
 				04ADC358244A2C87008644CA /* MarsRoverBaseDataClient.swift in Sources */,
 				04ADC35A244A2C92008644CA /* MarsRoverPhotoClient.swift in Sources */,
